@@ -1,12 +1,30 @@
 # frozen_string_literal: true
 
-require_relative "roads/version"
+require "roads/version"
+require 'roads/routing'
 require 'roads/array'
 
 module Roads
   class Application
     def call(env)
-      [200, {'Content-Type' => 'text/html'}, ['Hello, from Ruby on Roads!']]
+      if env['PATH_INFO'] == '/favicon.ico'
+        return [404, {'Content-Type' => 'text/html'}, []]
+      end
+
+      klass, act = get_controller_and_action(env)
+      controller = klass.new(env)
+      text = controller.send(act)
+      [200, {'Content-Type' => 'text/html'}, [text]]
+    end
+  end
+
+  class Controller
+    def initialize(env)
+      @env = env
+    end
+
+    def env
+      @env
     end
   end
 end
