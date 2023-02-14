@@ -3,6 +3,8 @@
 require "roads/version"
 require 'roads/routing'
 require 'roads/array'
+require 'roads/util'
+require 'roads/dependencies'
 
 module Roads
   class Application
