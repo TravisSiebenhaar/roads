@@ -1,6 +1,15 @@
 require_relative 'test_helper'
 
+class TestController < Roads::Controller
+  def index
+    'Hello!'
+  end
+end
+
 class TestApp < Roads::Application
+  def get_controller_and_action(env)
+    [TestController, 'index']
+  end
 end
 
 class RoadsAppTest < Minitest::Test
@@ -15,6 +24,6 @@ class RoadsAppTest < Minitest::Test
 
     assert last_response.ok?
     body = last_response.body
-    assert body['Hello']
+    assert body['Hello!']
   end
 end

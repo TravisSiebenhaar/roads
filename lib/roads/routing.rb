@@ -1,11 +1,11 @@
 module Roads
   class Application
     def get_controller_and_action(env)
-      _, cont, action, after = env['PATH_INFO'].split('/', 4)
-      cont = cont.capitalize
-      cont += 'Controller'
+      _, controller, action, after = env['PATH_INFO'].split('/', 4)
+      controller = controller.capitalize
+      controller += 'Controller'
 
-      [Object.const_get(cont), action]
+      [Object.const_get(controller), action]
     end
   end
 end

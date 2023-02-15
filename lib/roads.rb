@@ -5,6 +5,7 @@ require 'roads/routing'
 require 'roads/array'
 require 'roads/util'
 require 'roads/dependencies'
+require 'roads/controller'
 
 module Roads
   class Application
@@ -18,15 +19,9 @@ module Roads
       text = controller.send(act)
       [200, {'Content-Type' => 'text/html'}, [text]]
     end
-  end
 
-  class Controller
-    def initialize(env)
-      @env = env
-    end
-
-    def env
-      @env
+    def self.framework_root
+      __DIR__
     end
   end
 end
