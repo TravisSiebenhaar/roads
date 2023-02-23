@@ -1,7 +1,10 @@
 require 'erubis'
+require 'roads/file_model'
 
 module Roads
   class Controller
+    include Roads::Model
+
     def initialize(env)
       @env = env
     end
@@ -14,7 +17,7 @@ module Roads
       filename = File.join('app', 'views', controller_name, "#{view_name}.html.erb")
       template = File.read(filename)
       eruby = Erubis::Eruby.new(template)
-      eruby.result(locals.merge(env:))
+      eruby.result(locals.merge(:env => env))
     end
 
     def controller_name

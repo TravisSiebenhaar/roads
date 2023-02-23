@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_dependency 'rack', '~> 2.2'
   spec.add_dependency 'erubis'
+  spec.add_dependency 'multi_json'
 
   # Testing dependencies
   spec.add_development_dependency 'minitest'

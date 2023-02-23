@@ -6,6 +6,7 @@ require 'roads/array'
 require 'roads/util'
 require 'roads/dependencies'
 require 'roads/controller'
+require 'roads/file_model'
 
 module Roads
   class Application
