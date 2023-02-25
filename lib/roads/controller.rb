@@ -25,7 +25,9 @@ module Roads
       filename = File.join('app', 'views', controller_name, "#{view_name}.html.erb")
       template = File.read(filename)
       eruby = Erubis::Eruby.new(template)
+      STDOUT.puts "eruby result: #{eruby.inspect}"
       eruby.result(locals.merge(:env => env))
+      STDOUT.puts "eruby locals: #{eruby.inspect}"
     end
 
     def controller_name
