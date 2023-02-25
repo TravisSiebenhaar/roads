@@ -13,6 +13,14 @@ module Roads
       @env
     end
 
+    def request
+      @request ||= Rack::Request.new(env)
+    end
+
+    def params
+      request.params
+    end
+
     def render(view_name, locals={})
       filename = File.join('app', 'views', controller_name, "#{view_name}.html.erb")
       template = File.read(filename)
